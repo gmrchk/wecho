@@ -132,7 +132,7 @@ var Wecho = function () {
             tick: this.baseUrl + "tick.mp3"
         };
 
-        this.sounds = [];
+        this.sounds = {};
     }
 
     _createClass(Wecho, [{
@@ -150,7 +150,7 @@ var Wecho = function () {
             list.forEach(function (item) {
                 if (_this.predefinedList[item]) {
                     var sound = new Audio(_this.predefinedList[item]);
-                    _this.sounds.push(sound);
+                    _this.sounds[item] = sound;
                 } else {
                     console.warn("Sound '" + item + "' is not in predefined list. Try adding it with add method.");
                 }
@@ -159,11 +159,13 @@ var Wecho = function () {
     }, {
         key: "setVolume",
         value: function setVolume(volume, sound) {
+            var _this2 = this;
+
             if (sound) {
                 this.sounds[sound].volume = volume;
             } else {
-                this.sounds.forEach(function (sound) {
-                    sound.volume = volume;
+                Object.keys(this.sounds).forEach(function (sound) {
+                    _this2.sounds[sound].volume = volume;
                 });
             }
             return true;

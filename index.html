@@ -9,12 +9,17 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     </head>
     <body>
+        <button data-play="tick">Tick</button>
+        <button data-play="boob">Boob</button>
+        <button data-play="click">Click</button>
+        <button data-play="pop">Pop</button>
         <button data-play="glass">Glass</button>
+
         <script src="./dist/wecho.js"></script>
         <script>
             var wecho = new Wecho();
             wecho.load();
-            wecho.setVolume(0.5);
+            wecho.setVolume(1);
 
             document.querySelectorAll('[data-play]').forEach(function(element) {
                 element.addEventListener('click', function(event) {

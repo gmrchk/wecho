@@ -20,7 +20,7 @@ export default class Wecho {
             tick: this.baseUrl + "tick.mp3",
         };
 
-        this.sounds = [];
+        this.sounds = {};
     }
 
     add(name, url) {
@@ -31,7 +31,7 @@ export default class Wecho {
         list.forEach(item => {
             if (this.predefinedList[item]) {
                 let sound = new Audio(this.predefinedList[item]);
-                this.sounds.push(sound);
+                this.sounds[item] = sound;
             } else {
                 console.warn(`Sound '${item}' is not in predefined list. Try adding it with add method.`);
             }
@@ -42,8 +42,8 @@ export default class Wecho {
         if(sound) {
             this.sounds[sound].volume = volume;
         } else {
-            this.sounds.forEach(sound => {
-                sound.volume = volume;
+            Object.keys(this.sounds).forEach(sound => {
+                this.sounds[sound].volume = volume;
             })
         }
         return true;
