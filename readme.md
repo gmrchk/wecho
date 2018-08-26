@@ -1,5 +1,5 @@
 # Wecho
-Wecho is a small module to simplify usage of sounds on the web.
+Wecho is a small module to simplify usage of sounds on the web with [several sounds](https://gmrchk.github.io/wecho/) provided within the Wecho ([Contributions](#contributions)).
 
 ## Installation
 ```shell
@@ -45,7 +45,7 @@ document.querySelectorAll('button').forEach(function(element) {
 ### add
 Adds a sound to the predefined list from which the sounds can be loaded.
 ```javascript
-wecho.add([name of sound to be used by Wecho], [URL of the sound]);
+wecho.add(nameOfSound, URLofSound);
 ```
 
 ### load
@@ -57,13 +57,13 @@ wecho.load(['tick', 'boop']);
 ### load
 Sets volume for one or all sounds.
 ```javascript
-wecho.setVolume([volume (0-1)], [name of sound (optional)])
+wecho.setVolume(volume, nameOfSound); // volume accepts 0-1, name of sound is optional
 ```
 
 ### play
 Plays sound. Note that sound must be loaded first.
 ```javascript
-wecho.play([sound name])
+wecho.play(soundName);
 ```
 
 ## Contributions
