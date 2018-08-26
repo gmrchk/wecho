@@ -12,8 +12,6 @@ export default class Wecho {
             ...setOptions
         }
 
-        this.baseUrl = 'https://gmrchk.github.io/wecho/sounds/';
-
         this.predefinedList = {
             boob: this.baseUrl + "boob.mp3",
             click: this.baseUrl + "click.mp3",
@@ -26,6 +24,10 @@ export default class Wecho {
         this.sounds = {};
 
         this.setVolume(this.options.volume);
+    }
+
+    get baseUrl() {
+        return 'https://gmrchk.github.io/wecho/sounds/';
     }
 
     add(name, url) {

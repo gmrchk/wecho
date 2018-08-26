@@ -124,8 +124,6 @@ var Wecho = function () {
 
         this.options = _extends({}, defaults, setOptions);
 
-        this.baseUrl = 'https://gmrchk.github.io/wecho/sounds/';
-
         this.predefinedList = _extends({
             boob: this.baseUrl + "boob.mp3",
             click: this.baseUrl + "click.mp3",
@@ -190,6 +188,11 @@ var Wecho = function () {
                     console.warn("Sound '" + sound + "' is not in predefined list. Try adding it with add method.");
                 }
             }
+        }
+    }, {
+        key: "baseUrl",
+        get: function get() {
+            return 'https://gmrchk.github.io/wecho/sounds/';
         }
     }]);
 
