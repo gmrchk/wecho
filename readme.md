@@ -21,8 +21,8 @@ or include the file from the dist folder
 ```javascript
 // define options (inlcluded options are default values, so options argument can be omitted)
 let options = {
-    volume: .5, // can be set for each sound sepparatelly
-    finishPlaying: false,   // defines whether the sound should restart playing when it did not finish
+    volume: .5, // can be set for each sound separately
+    finishPlaying: false,   // defines whether the sound should restart playing in case it's still being played
     customSounds: {},   // add your own sounds (property is the name of sound and value is the URL)
 };
 
