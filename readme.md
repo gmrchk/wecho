@@ -19,13 +19,15 @@ or include the file from the dist folder
 ## Usage
 
 ```javascript
-// create instance of Wecho
+// define options (inlcluded options are default values, so options argument can be omitted)
 let options = {
     volume: .5, // can be set for each sound sepparatelly
     finishPlaying: false,   // defines whether the sound should restart playing when it did not finish
     customSounds: {},   // add your own sounds (property is the name of sound and value is the URL)
 };
-const wecho = new Wecho(options);   // inlcluded options are default values (options argument can be ommited)
+
+// create instance of Wecho
+const wecho = new Wecho(options);
 
 // load desired sounds
 wecho.load(['tick', 'boop']);   // empty arguments loads all the sounds
