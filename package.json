@@ -1,6 +1,6 @@
 {
   "name": "wecho",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Simple use of sound on the web.",
   "main": "lib/index.js",
   "scripts": {

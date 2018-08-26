@@ -54,7 +54,7 @@ Loads sounds with URL from predefined list.
 wecho.load(['tick', 'boop']);
 ```
 
-### load
+### setVolume
 Sets volume for one or all sounds.
 ```javascript
 wecho.setVolume(volume, nameOfSound); // volume accepts 0-1, name of sound is optional
