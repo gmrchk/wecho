@@ -2,10 +2,12 @@ export default class Wecho {
     constructor(setOptions) {
         // default options
         let defaults = {
-            volume: 50,
+            volume: .5,
+            customSounds: {},
+            finishPlaying: false,
         }
 
-        let options = {
+        this.options = {
             ...defaults,
             ...setOptions
         }
@@ -18,9 +20,12 @@ export default class Wecho {
             glass: this.baseUrl + "glass.mp3",
             pop: this.baseUrl + "pop.mp3",
             tick: this.baseUrl + "tick.mp3",
+            ...this.options.customSounds
         };
 
         this.sounds = {};
+
+        this.setVolume(this.options.volume);
     }
 
     add(name, url) {
@@ -31,6 +36,7 @@ export default class Wecho {
         list.forEach(item => {
             if (this.predefinedList[item]) {
                 let sound = new Audio(this.predefinedList[item]);
+                sound.volume = this.options.volume;
                 this.sounds[item] = sound;
             } else {
                 console.warn(`Sound '${item}' is not in predefined list. Try adding it with add method.`);
@@ -51,6 +57,9 @@ export default class Wecho {
 
     play(sound) {
         if(this.sounds[sound] != null) {
+            if (!this.options.finishPlaying) {
+                this.sounds[sound].currentTime = 0;
+            }
             this.sounds[sound].play();
         } else {
             if(this.predefinedList[sound] != null) {

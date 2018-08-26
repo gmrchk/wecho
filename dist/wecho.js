@@ -117,22 +117,26 @@ var Wecho = function () {
 
         // default options
         var defaults = {
-            volume: 50
+            volume: .5,
+            customSounds: {},
+            finishPlaying: false
         };
 
-        var options = _extends({}, defaults, setOptions);
+        this.options = _extends({}, defaults, setOptions);
 
         this.baseUrl = 'https://gmrchk.github.io/wecho/sounds/';
 
-        this.predefinedList = {
+        this.predefinedList = _extends({
             boob: this.baseUrl + "boob.mp3",
             click: this.baseUrl + "click.mp3",
             glass: this.baseUrl + "glass.mp3",
             pop: this.baseUrl + "pop.mp3",
             tick: this.baseUrl + "tick.mp3"
-        };
+        }, this.options.customSounds);
 
         this.sounds = {};
+
+        this.setVolume(this.options.volume);
     }
 
     _createClass(Wecho, [{
@@ -150,6 +154,7 @@ var Wecho = function () {
             list.forEach(function (item) {
                 if (_this.predefinedList[item]) {
                     var sound = new Audio(_this.predefinedList[item]);
+                    sound.volume = _this.options.volume;
                     _this.sounds[item] = sound;
                 } else {
                     console.warn("Sound '" + item + "' is not in predefined list. Try adding it with add method.");
@@ -174,6 +179,9 @@ var Wecho = function () {
         key: "play",
         value: function play(sound) {
             if (this.sounds[sound] != null) {
+                if (!this.options.finishPlaying) {
+                    this.sounds[sound].currentTime = 0;
+                }
                 this.sounds[sound].play();
             } else {
                 if (this.predefinedList[sound] != null) {
