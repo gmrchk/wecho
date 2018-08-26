@@ -28,37 +28,61 @@
 
             button {
                 border-radius: 4px;
-                border: 1px solid #D43078;
+                border: 1px solid transparent;
                 background: #D43078;
                 color: #fff;
-                padding: 6px 20px;
+                padding: 10px 30px;
                 font-size: 20px;
                 margin: 0 10px 14px;
+                box-shadow: 0 10px 26px rgba(212, 48, 120, .6);
+                transition: .2s;
+            }
+
+            button:focus {
+                outline: none;
+                transform: scale(1.05);
+            }
+
+            button:active {
+                transform: translateY(2px);
+                box-shadow: 0 8px 16px rgba(212, 48, 120, .6);
+            }
+
+            p {
+                font-size: 16px;
+                color: #888;
+                margin: 15px auto 25px;
+                line-height: 1.6;
             }
         </style>
     </head>
     <body>
         <div class="holder">
             <div class="holder-inner">
+                <p>Volume is set to maximum.</p>
                 <button data-play="tick">Tick</button>
                 <button data-play="boob">Boob</button>
                 <button data-play="click">Click</button>
                 <button data-play="pop">Pop</button>
                 <button data-play="glass">Glass</button>
+                <p>You can play with wecho instance in the console (global 'wecho' variable).</p>
             </div>
         </div>
 
         <script src="./dist/wecho.js"></script>
         <script>
-            var wecho = new Wecho();
+            var wecho = new Wecho({
+                volume: 1,
+            });
             wecho.load();
-            wecho.setVolume(1);
 
             document.querySelectorAll('[data-play]').forEach(function(element) {
                 element.addEventListener('click', function(event) {
                     wecho.play(event.target.dataset.play);
                 });
             });
+
+            console.log(wecho)
         </script>
     </body>
 </html>

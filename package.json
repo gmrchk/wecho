@@ -1,7 +1,7 @@
 {
   "name": "wecho",
   "version": "0.0.1",
-  "description": "Sound on web.",
+  "description": "Simple use of sound on the web.",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
